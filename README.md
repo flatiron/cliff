@@ -58,17 +58,17 @@ The `putObject` method is a simple helper function for prefixing and styling ins
 var cliff = require('cliff');
 
 cliff.putObject({
-  "literal": "bazz",
-  "arr": [
+  literal: "bazz",
+  arr: [
     "one",
     2,
   ],
-  "obj": {
-    "host": "localhost",
-    "port": 5984,
-    "auth": {
-      "username": "admin",
-      "password": "password"
+  obj: {
+    host: "localhost",
+    port: 5984,
+    auth: {
+      username: "admin",
+      password: "password"
     }
   }
 });
