@@ -29,17 +29,17 @@ There are a number of methods available in Cliff for common logging tasks in com
 
 ### Inspecting Objects
 
-#### `cliff.putObject`
+**cliff.putObject**
 
-#### `cliff.inspect`
+**cliff.inspect**
 
 ### Logging rows of data 
 
-#### `cliff.stringifyRows`
+**cliff.stringifyRows**
 
-#### `cliff.rowifyObjects`
+**cliff.rowifyObjects**
 
-#### `cliff.logRows`
+**cliff.logRows**
 
 ## Run Tests
 All of the winston tests are written in [vows][3], and cover all of the use cases described above.
