@@ -29,9 +29,65 @@ There are a number of methods available in Cliff for common logging tasks in com
 
 ### Inspecting Objects
 
+**cliff.inspect**
+
+The `inspect` method is a lightweight wrapper to a pre-configured [eyes][1] inspector. Here is how it is created:
+
+``` js
+cliff.inspect = eyes.inspector({ stream: null,
+  styles: {               // Styles applied to stdout
+    all:     null,        // Overall style applied to everything
+    label:   'underline', // Inspection labels, like 'array' in `array: [1, 2, 3]`
+    other:   'inverted',  // Objects which don't have a literal representation, such as functions
+    key:     'grey',      // The keys in object literals, like 'a' in `{a: 1}`
+    special: 'grey',      // null, undefined...
+    number:  'blue',      // 0, 1, 2...
+    bool:    'magenta',   // true false
+    regexp:  'green',     // /\d+/
+  }
+});
+```
+
+If you wish to change the coloring of objects that are logged using `cliff` you only need to override `cliff.inspect` with a new [eyes][1] inspector. 
+
 **cliff.putObject**
 
-**cliff.inspect**
+The `putObject` method is a simple helper function for prefixing and styling inspected object output from [eyes][1]. Here's a quick sample:
+
+``` js
+var cliff = require('cliff');
+
+cliff.putObject({
+  "literal": "bazz",
+  "arr": [
+    "one",
+    2,
+  ],
+  "obj": {
+    "host": "localhost",
+    "port": 5984,
+    "auth": {
+      "username": "admin",
+      "password": "password"
+    }
+  }
+});
+```
+
+The resulting output on the command-line would be (sadly the colors do not translate): 
+
+``` bash
+$ node examples/put-object.js 
+data:   {
+data:       arr: [ 'one', 2 ],
+data:       literal: 'bazz',
+data:       obj: {
+data:           host: 'localhost',
+data:           port: 5984,
+data:           auth: { username: 'admin', password: 'password' }
+data:       }
+data:   }
+```
 
 ### Logging rows of data 
 
