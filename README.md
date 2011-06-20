@@ -17,53 +17,8 @@ CLI output formatting tools: "Your CLI Formatting Friend".
 ## Usage
 There are a number of methods available in Cliff for common logging tasks in command-line tools. If you're looking for more usage, checkout the [examples in this repository][3]:
 
-1. Inspecting Objects
-2. Logging rows of data
-
-### Inspecting Objects
-
-**cliff.inspect(obj)**
-
-The `inspect` method is a lightweight wrapper to a pre-configured [eyes][1] inspector. If you wish to change the coloring of objects that are logged using `cliff` you only need to override `cliff.inspect` with a new [eyes][1] inspector. 
-
-**cliff.putObject(obj, [rewriters, padding])**
-
-The `putObject` method is a simple helper function for prefixing and styling inspected object output from [eyes][1]. Here's a quick sample:
-
-``` js
-var cliff = require('cliff');
-
-cliff.putObject({
-  literal: "bazz",
-  arr: [
-    "one",
-    2,
-  ],
-  obj: {
-    host: "localhost",
-    port: 5984,
-    auth: {
-      username: "admin",
-      password: "password"
-    }
-  }
-});
-```
-
-The resulting output on the command-line would be (sadly the colors do not translate): 
-
-``` bash
-$ node examples/put-object.js 
-data:   {
-data:       arr: [ 'one', 2 ],
-data:       literal: 'bazz',
-data:       obj: {
-data:           host: 'localhost',
-data:           port: 5984,
-data:           auth: { username: 'admin', password: 'password' }
-data:       }
-data:   }
-```
+1. Logging rows of data
+2. Inspecting Objects
 
 ### Logging rows of data
 
@@ -165,6 +120,52 @@ data:   Bob   carmel    apples
 data:   Joe   chocolate cake
 data:   Nick  vanilla   ice cream
 ```
+
+### Inspecting Objects
+
+**cliff.inspect(obj)**
+
+The `inspect` method is a lightweight wrapper to a pre-configured [eyes][1] inspector. If you wish to change the coloring of objects that are logged using `cliff` you only need to override `cliff.inspect` with a new [eyes][1] inspector. 
+
+**cliff.putObject(obj, [rewriters, padding])**
+
+The `putObject` method is a simple helper function for prefixing and styling inspected object output from [eyes][1]. Here's a quick sample:
+
+``` js
+var cliff = require('cliff');
+
+cliff.putObject({
+  literal: "bazz",
+  arr: [
+    "one",
+    2,
+  ],
+  obj: {
+    host: "localhost",
+    port: 5984,
+    auth: {
+      username: "admin",
+      password: "password"
+    }
+  }
+});
+```
+
+The resulting output on the command-line would be (sadly the colors do not translate): 
+
+``` bash
+$ node examples/put-object.js 
+data:   {
+data:       arr: [ 'one', 2 ],
+data:       literal: 'bazz',
+data:       obj: {
+data:           host: 'localhost',
+data:           port: 5984,
+data:           auth: { username: 'admin', password: 'password' }
+data:       }
+data:   }
+```
+
 
 ## Run Tests
 All of the cliff tests are written in [vows][4], and cover all of the use cases described above.
