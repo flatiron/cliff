@@ -1,6 +1,4 @@
 var cliff = require('../lib/cliff');
-var winston = require('winston');
-
 
 var table = [
   ["Name",  "Flavor",    "Dessert"],

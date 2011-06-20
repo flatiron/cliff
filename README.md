@@ -14,13 +14,6 @@ CLI output formatting tools: "Your CLI Formatting Friend".
   [sudo] npm install cliff
 ```
 
-## Motivation
-Cliff is the swiss army knife of CLI formatting tools. It is based on highly flexible and powerful libraries: 
-
-* [winston][0]: A multi-transport async logging library for node.js
-* [eyes][1]: A customizable value inspector for node.js
-* [colors][2]: Get colors in your node.js console like what 
-
 ## Usage
 There are a number of methods available in Cliff for common logging tasks in command-line tools. If you're looking for more usage, checkout the [examples in this repository][3]:
 
@@ -87,6 +80,35 @@ data:           port: 5984,
 data:           auth: { username: 'admin', password: 'password' }
 data:       }
 data:   }
+```
+
+**cliff.putTable(level, table)**
+
+The `putTable` method is a simple helper function for logging 2D not-jagged array. Here's a quick sample:
+
+``` js
+var cliff = require('../lib/cliff');
+
+var table = [
+  ["Name",  "Flavor",    "Dessert"],
+  ["Alice", "cherry",    "yogurt"],
+  ["Bob",   "carmel",    "apples"],
+  ["Joe",   "chocolate", "cake"],
+  ["Nick",  "vanilla",   "ice cream"]
+];
+
+cliff.putTable('info', table);
+```
+
+The resulting output on the command-line would be (sadly the colors do not translate): 
+
+``` bash
+$ node examples/put-table.js
+info:   Name  Flavor    Dessert
+info:   Alice cherry    yogurt
+info:   Bob   carmel    apples
+info:   Joe   chocolate cake
+info:   Nick  vanilla   ice cream
 ```
 
 ### Logging rows of data 
