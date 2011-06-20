@@ -67,7 +67,7 @@ data:   }
 
 ### Logging rows of data
 
-**cliff.stringifyRows(rows, colors)**
+**cliff.stringifyRows(rows[, colors])**
 Takes a set of Arrays and row headers and returns properly formatted and padded rows
 
 **cliff.putRows(levels, rows[, colors])**
@@ -84,26 +84,26 @@ var rows = [
   ["Nick",  "vanilla",   "ice cream"]
 ];
 
-cliff.putRows(rows);
+cliff.putRows('data', rows);
 ```
 
-The resulting output on the command-line would be (sadly the colors do not translate): 
+The resulting output on the command-line would be (sadly the colors do not translate):
 
 ``` bash
 $ node examples/put-table.js
-info:   Name  Flavor    Dessert
-info:   Alice cherry    yogurt
-info:   Bob   carmel    apples
-info:   Joe   chocolate cake
-info:   Nick  vanilla   ice cream
+data:   Name  Flavor    Dessert
+data:   Alice cherry    yogurt
+data:   Bob   carmel    apples
+data:   Joe   chocolate cake
+data:   Nick  vanilla   ice cream
 ```
 
 
-**cliff.stringifyObjectRows(objs, properties, colors)**
+**cliff.stringifyObjectRows(objs, properties[, colors])**
 *used to be: cliff.rowifyObjects(objs, properties, colors)*
 Takes a set of Objects and the properties to extract from them and returns properly formatted and padded rows.
 
-**cliff.putObjectRows(level, objs, properties, colors)**
+**cliff.putObjectRows(level, objs, properties[, colors])**
 Takes a set of Objects and the properties to extract from them and it will log to the console. (it prints `stringifyObjectRows` with [winston][0]). Here's a sample:
 
 ``` js
@@ -126,19 +126,19 @@ Takes a set of Objects and the properties to extract from them and it will log t
 ```
 
 ``` bash
-  $ node examples/put-object-rows.js 
-  data:   id                   name address          
-  data:   0.4157979858573526   bazz 1234 Nowhere Dr. 
-  data:   0.7140450903680176   bazz 1234 Nowhere Dr. 
-  data:   0.39573496161028743  bazz 1234 Nowhere Dr. 
-  data:   0.8285396825522184   bazz 1234 Nowhere Dr. 
-  data:   0.40711840940639377  bazz 1234 Nowhere Dr. 
-  data:   0.7133555023465306   bazz 1234 Nowhere Dr. 
-  data:   0.006228019250556827 bazz 1234 Nowhere Dr. 
-  data:   0.5560931102372706   bazz 1234 Nowhere Dr. 
-  data:   0.14310582634061575  bazz 1234 Nowhere Dr. 
-  data:   0.4638693502638489   bazz 1234 Nowhere Dr. 
-``` 
+  $ node examples/put-object-rows.js
+  data:   id                   name address
+  data:   0.4157979858573526   bazz 1234 Nowhere Dr.
+  data:   0.7140450903680176   bazz 1234 Nowhere Dr.
+  data:   0.39573496161028743  bazz 1234 Nowhere Dr.
+  data:   0.8285396825522184   bazz 1234 Nowhere Dr.
+  data:   0.40711840940639377  bazz 1234 Nowhere Dr.
+  data:   0.7133555023465306   bazz 1234 Nowhere Dr.
+  data:   0.006228019250556827 bazz 1234 Nowhere Dr.
+  data:   0.5560931102372706   bazz 1234 Nowhere Dr.
+  data:   0.14310582634061575  bazz 1234 Nowhere Dr.
+  data:   0.4638693502638489   bazz 1234 Nowhere Dr.
+```
 
 ## Run Tests
 All of the cliff tests are written in [vows][4], and cover all of the use cases described above.
