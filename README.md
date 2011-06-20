@@ -65,7 +65,7 @@ data:       }
 data:   }
 ```
 
-**cliff.putTable(level, table)**
+**cliff.putTable(table)**
 
 The `putTable` method is a simple helper function for logging 2D not-jagged array. Here's a quick sample:
 
@@ -80,7 +80,7 @@ var table = [
   ["Nick",  "vanilla",   "ice cream"]
 ];
 
-cliff.putTable('info', table);
+cliff.putTable(table);
 ```
 
 The resulting output on the command-line would be (sadly the colors do not translate): 
