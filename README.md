@@ -139,6 +139,32 @@ Takes a set of Objects and the properties to extract from them and it will log t
   data:   0.14310582634061575  bazz 1234 Nowhere Dr.
   data:   0.4638693502638489   bazz 1234 Nowhere Dr.
 ```
+**Colors Parameter**
+The `colors` parameter is an array that colors the first row. It uses the [colors.js][2]. You can use any of those.
+
+``` js
+  var cliff = require('../lib/cliff');
+
+  var rows = [
+    ['Name',  'Flavor',    'Dessert'],
+    ['Alice'.grey, 'cherry'.cyan,    'yogurt'.yellow],
+    ['Bob',   'carmel',    'apples'],
+    ['Joe',   'chocolate', 'cake'],
+    ['Nick',  'vanilla',   'ice cream']
+  ];
+
+  cliff.putRows('data', rows, ['red', 'blue', 'green']);
+```
+
+The resulting output on the command-line would be (except it would be super colorful):
+``` bash
+$ node examples/put-rows-colors.js
+data:   Name  Flavor    Dessert
+data:   Alice cherry    yogurt
+data:   Bob   carmel    apples
+data:   Joe   chocolate cake
+data:   Nick  vanilla   ice cream
+```
 
 ## Run Tests
 All of the cliff tests are written in [vows][4], and cover all of the use cases described above.
