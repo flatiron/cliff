@@ -65,14 +65,14 @@ data:       }
 data:   }
 ```
 
-**cliff.putTable(table)**
+**cliff.putRows(rows)**
 
-The `putTable` method is a simple helper function for logging 2D not-jagged array. Here's a quick sample:
+The `putRows` method is a simple helper function for logging 2D not-jagged array. Here's a quick sample:
 
 ``` js
 var cliff = require('../lib/cliff');
 
-var table = [
+var rows = [
   ["Name",  "Flavor",    "Dessert"],
   ["Alice", "cherry",    "yogurt"],
   ["Bob",   "carmel",    "apples"],
@@ -80,7 +80,7 @@ var table = [
   ["Nick",  "vanilla",   "ice cream"]
 ];
 
-cliff.putTable(table);
+cliff.putRows(rows);
 ```
 
 The resulting output on the command-line would be (sadly the colors do not translate): 

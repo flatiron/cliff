@@ -1,6 +1,6 @@
 var cliff = require('../lib/cliff');
 
-var table = [
+var rows = [
   ['Name',  'Flavor',    'Dessert'],
   ['Alice', 'cherry',    'yogurt'],
   ['Bob',   'carmel',    'apples'],
@@ -8,4 +8,4 @@ var table = [
   ['Nick',  'vanilla',   'ice cream']
 ];
 
-cliff.putTable(table);
+cliff.putRows(rows);
