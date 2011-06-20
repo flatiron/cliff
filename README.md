@@ -24,24 +24,7 @@ There are a number of methods available in Cliff for common logging tasks in com
 
 **cliff.inspect(obj)**
 
-The `inspect` method is a lightweight wrapper to a pre-configured [eyes][1] inspector. Here is how it is created:
-
-``` js
-cliff.inspect = eyes.inspector({ stream: null,
-  styles: {               // Styles applied to stdout
-    all:     null,        // Overall style applied to everything
-    label:   'underline', // Inspection labels, like 'array' in `array: [1, 2, 3]`
-    other:   'inverted',  // Objects which don't have a literal representation, such as functions
-    key:     'grey',      // The keys in object literals, like 'a' in `{a: 1}`
-    special: 'grey',      // null, undefined...
-    number:  'blue',      // 0, 1, 2...
-    bool:    'magenta',   // true false
-    regexp:  'green',     // /\d+/
-  }
-});
-```
-
-If you wish to change the coloring of objects that are logged using `cliff` you only need to override `cliff.inspect` with a new [eyes][1] inspector. 
+The `inspect` method is a lightweight wrapper to a pre-configured [eyes][1] inspector. If you wish to change the coloring of objects that are logged using `cliff` you only need to override `cliff.inspect` with a new [eyes][1] inspector. 
 
 **cliff.putObject(obj, [rewriters, padding])**
 
@@ -160,7 +143,7 @@ Similar to `rowifyObjects`, but it will log to the console using [winston][0] at
 ``` 
 
 ## Run Tests
-All of the winston tests are written in [vows][4], and cover all of the use cases described above.
+All of the cliff tests are written in [vows][4], and cover all of the use cases described above.
 
 ```
   npm test
