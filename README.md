@@ -154,16 +154,16 @@ cliff.putObject({
 The resulting output on the command-line would be (sadly the colors do not translate): 
 
 ``` bash
-$ node examples/put-object.js 
-data:   {
-data:       arr: [ 'one', 2 ],
-data:       literal: 'bazz',
-data:       obj: {
-data:           host: 'localhost',
-data:           port: 5984,
-data:           auth: { username: 'admin', password: 'password' }
-data:       }
-data:   }
+  $ node examples/put-object.js 
+  data:   {
+  data:       arr: [ 'one', 2 ],
+  data:       literal: 'bazz',
+  data:       obj: {
+  data:           host: 'localhost',
+  data:           port: 5984,
+  data:           auth: { username: 'admin', password: 'password' }
+  data:       }
+  data:   }
 ```
 
 
