@@ -65,9 +65,10 @@ data:       }
 data:   }
 ```
 
-**cliff.putRows(rows)**
+### Logging rows of data
 
-The `putRows` method is a simple helper function for logging 2D not-jagged array. Here's a quick sample:
+**cliff.putRows(levels, rows[, colors])**
+The `putRows` method is a simple helper that takes a set of Arrays and row headers and returns properly formatted and padded rows. Here's a quick sample:
 
 ``` js
 var cliff = require('../lib/cliff');
@@ -94,19 +95,14 @@ info:   Joe   chocolate cake
 info:   Nick  vanilla   ice cream
 ```
 
-### Logging rows of data 
-
 **cliff.stringifyRows(rows, colors)**
-Takes a set of Arrays and row headers and returns properly formatted and padded rows. 
+Takes a set of Arrays and row headers and returns properly formatted and padded rows ( a string version of `putRows` )
 
-**cliff.putRows(level, rows, colors)**
-Similar to `stringifyRows`, but it will log to the console using [winston][0] at the specified level.
 
-**cliff.rowifyObjects(objs, properties, colors)**
-Takes a set of Objects and the properties to extract from them and returns properly formatted and padded rows.
+
 
 **cliff.putObjectRows(level, objs, properties, colors)**
-Similar to `rowifyObjects`, but it will log to the console using [winston][0] at the specified level. Here's a sample:
+Takes a set of Objects and the properties to extract from them and it will log to the console using [winston][0] at the specified level. Here's a sample:
 
 ``` js
   var cliff = require('cliff');
@@ -141,6 +137,11 @@ Similar to `rowifyObjects`, but it will log to the console using [winston][0] at
   data:   0.14310582634061575  bazz 1234 Nowhere Dr. 
   data:   0.4638693502638489   bazz 1234 Nowhere Dr. 
 ``` 
+
+**cliff.stringifyObjectRows(objs, properties, colors)**
+*used to be: cliff.rowifyObjects(objs, properties, colors)*
+Takes a set of Objects and the properties to extract from them and returns properly formatted and padded rows (it is the string version of putObjectRows).
+
 
 ## Run Tests
 All of the cliff tests are written in [vows][4], and cover all of the use cases described above.
