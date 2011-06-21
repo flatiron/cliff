@@ -185,7 +185,7 @@ cliff.putObject({
 ```
 
 The resulting output on the command-line would be: 
-![output from put-object.js[put-object]
+![output from put-object.js][put-object]
 
 ## Run Tests
 All of the cliff tests are written in [vows][4], and cover all of the use cases described above.
@@ -193,6 +193,14 @@ All of the cliff tests are written in [vows][4], and cover all of the use cases 
 ```
   npm test
 ```
+
+## Motivation
+Cliff is the swiss army knife of CLI formatting tools. It is based on highly flexible and powerful libraries: 
+
+* [winston][0]: A multi-transport async logging library for node.js
+* [eyes][1]: A customizable value inspector for node.js
+* [colors][2]: Get colors in your node.js console like what 
+
 
 #### Author: [Charlie Robbins](http://twitter.com/indexzero)
 
