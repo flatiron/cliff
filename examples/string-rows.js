@@ -8,4 +8,4 @@ var rows = [
   ['Nick',  'vanilla',   'ice cream']
 ];
 
-console.log(cliff.stringifyRows(rows));
+console.log(cliff.stringifyRows(rows, ['red', 'blue', 'green']));

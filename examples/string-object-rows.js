@@ -20,4 +20,4 @@ for (var i = 0; i < 10; i++) {
   });
 }
 
-console.log(cliff.stringifyObjectRows(objs, ['id', 'name', 'address']));
+console.log(cliff.stringifyObjectRows(objs, ['id', 'name', 'address'], ['red', 'blue', 'green']));

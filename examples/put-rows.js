@@ -8,4 +8,4 @@ var rows = [
   ['Nick',  'vanilla',   'ice cream']
 ];
 
-cliff.putRows('data', rows);
+cliff.putRows('data', rows, ['red', 'blue', 'green']);
