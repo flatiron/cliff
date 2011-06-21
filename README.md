@@ -42,7 +42,7 @@ Takes a set of Arrays and row headers and returns properly formatted and padded 
 
 ![output from string-rows.js][string-rows]
 
-**cliff.putRows(levels, rows[, colors])**
+**cliff.putRows(level, rows[, colors])**
 
 The `putRows` method is a simple helper that takes a set of Arrays and row headers and logs properly formatted and padded rows (logs `stringifyRows` to [winston][0]). Here's a quick sample:
 
