@@ -23,6 +23,7 @@ There are a number of methods available in Cliff for common logging tasks in com
 ### Logging rows of data
 
 **cliff.stringifyRows(rows[, colors])**
+
 Takes a set of Arrays and row headers and returns properly formatted and padded rows. Here's a sample:
 
 ``` js
@@ -42,6 +43,7 @@ Takes a set of Arrays and row headers and returns properly formatted and padded 
 ![output from string-rows.js][string-rows]
 
 **cliff.putRows(levels, rows[, colors])**
+
 The `putRows` method is a simple helper that takes a set of Arrays and row headers and logs properly formatted and padded rows (logs `stringifyRows` to [winston][0]). Here's a quick sample:
 
 ``` js
@@ -64,6 +66,7 @@ The resulting output on the command-line would be:
 
 **cliff.stringifyObjectRows(objs, properties[, colors])**
 *used to be: cliff.rowifyObjects(objs, properties, colors)*
+
 Takes a set of Objects and the properties to extract from them and returns properly formatted and padded rows. Here's a sample:
 
 ``` js
@@ -88,6 +91,7 @@ Takes a set of Objects and the properties to extract from them and returns prope
 ![output from string-object-rows.js][string-object-rows]
 
 **cliff.putObjectRows(level, objs, properties[, colors])**
+
 Takes a set of Objects and the properties to extract from them and it will log to the console. (it prints `stringifyObjectRows` with [winston][0]). Here's a sample:
 
 ``` js
@@ -112,6 +116,7 @@ Takes a set of Objects and the properties to extract from them and it will log t
 ![output from string-object-rows.js][string-object-rows]
 
 **Colors Parameter**
+
 The `colors` parameter is an array that colors the first row. It uses the [colors.js][2]. You can use any of those.
 
 ``` js
@@ -185,9 +190,11 @@ cliff.putObject({
 ```
 
 The resulting output on the command-line would be: 
+
 ![output from put-object.js][put-object]
 
 ## Run Tests
+
 All of the cliff tests are written in [vows][4], and cover all of the use cases described above.
 
 ```
@@ -195,6 +202,7 @@ All of the cliff tests are written in [vows][4], and cover all of the use cases 
 ```
 
 ## Motivation
+
 Cliff is the swiss army knife of CLI formatting tools. It is based on highly flexible and powerful libraries: 
 
 * [winston][0]: A multi-transport async logging library for node.js
