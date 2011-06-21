@@ -113,15 +113,7 @@ The `colors` parameter is an array that colors the first row. It uses the [color
 
 The resulting output on the command-line would be (except it would be super colorful):
 
-``` bash
-  $ node examples/put-rows-colors.js
-  data:   Name  Flavor    Dessert
-  data:   Alice cherry    yogurt
-  data:   Bob   carmel    apples
-  data:   Joe   chocolate cake
-  data:   Nick  vanilla   ice cream
-```
-
+![output from puts-rows-colors.js][put-rows-colors]
 ### Inspecting Objects
 
 **cliff.inspect(obj)**
@@ -182,3 +174,4 @@ All of the cliff tests are written in [vows][4], and cover all of the use cases 
 [2]: http://github.com/marak/colors.js
 [3]: http://github.com/nodejitsu/cliff/tree/master/examples
 [4]: http://vowsjs.org
+[put-rows-colors]: /raw/master/assets/put-rows-colors.png
