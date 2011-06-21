@@ -129,6 +129,7 @@ The `colors` parameter is an array that colors the first row. It uses the [color
 ```
 
 The resulting output on the command-line would be:
+
 ![output from puts-rows-colors.js][put-rows-colors]
 
 ### Inspecting Objects
