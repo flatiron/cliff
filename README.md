@@ -14,41 +14,156 @@ CLI output formatting tools: "Your CLI Formatting Friend".
   [sudo] npm install cliff
 ```
 
-## Motivation
-Cliff is the swiss army knife of CLI formatting tools. It is based on highly flexible and powerful libraries: 
-
-* [winston][0]: A multi-transport async logging library for node.js
-* [eyes][1]: A customizable value inspector for node.js
-* [colors][2]: Get colors in your node.js console like what 
-
 ## Usage
 There are a number of methods available in Cliff for common logging tasks in command-line tools. If you're looking for more usage, checkout the [examples in this repository][3]:
 
-1. Inspecting Objects
-2. Logging rows of data
+1. Logging rows of data
+2. Inspecting Objects
+
+### Logging rows of data
+
+**cliff.stringifyRows(rows[, colors])**
+
+Takes a set of Arrays and row headers and returns properly formatted and padded rows. Here's a sample:
+
+``` js
+  var cliff = require('../lib/cliff');
+
+  var rows = [
+    ['Name',  'Flavor',    'Dessert'],
+    ['Alice', 'cherry',    'yogurt'],
+    ['Bob',   'carmel',    'apples'],
+    ['Joe',   'chocolate', 'cake'],
+    ['Nick',  'vanilla',   'ice cream']
+  ];
+
+  console.log(cliff.stringifyRows(rows, ['red', 'blue', 'green']));
+```
+
+![output from string-rows.js][string-rows]
+
+**cliff.putRows(level, rows[, colors])**
+
+The `putRows` method is a simple helper that takes a set of Arrays and row headers and logs properly formatted and padded rows (logs `stringifyRows` to [winston][0]). Here's a quick sample:
+
+``` js
+  var cliff = require('../lib/cliff');
+
+  var rows = [
+    ['Name',  'Flavor',    'Dessert'],
+    ['Alice', 'cherry',    'yogurt'],
+    ['Bob',   'carmel',    'apples'],
+    ['Joe',   'chocolate', 'cake'],
+    ['Nick',  'vanilla',   'ice cream']
+  ];
+
+  cliff.putRows('data', rows, ['red', 'blue', 'green']);
+```
+
+The resulting output on the command-line would be:
+
+![output from put-rows.js][put-rows]
+
+**cliff.stringifyObjectRows(objs, properties[, colors])**
+*used to be: cliff.rowifyObjects(objs, properties, colors)*
+
+Takes a set of Objects and the properties to extract from them and returns properly formatted and padded rows. Here's a sample:
+
+``` js
+  var cliff = require('../lib/cliff');
+
+  var objs = [], obj = {
+    name: "bazz",
+    address: "1234 Nowhere Dr.",
+  };
+
+  for (var i = 0; i < 10; i++) {
+    objs.push({
+      name: obj.name,
+      address: obj.address,
+      id: Math.random().toString()
+    });
+  }
+
+  console.log(cliff.stringifyObjectRows(objs, ['id', 'name', 'address'], ['red', 'blue', 'green']));
+```
+
+![output from string-object-rows.js][string-object-rows]
+
+**cliff.putObjectRows(level, objs, properties[, colors])**
+
+Takes a set of Objects and the properties to extract from them and it will log to the console. (it prints `stringifyObjectRows` with [winston][0]). Here's a sample:
+
+``` js
+  var cliff = require('../lib/cliff');
+
+  var objs = [], obj = {
+    name: "bazz",
+    address: "1234 Nowhere Dr.",
+  };
+
+  for (var i = 0; i < 10; i++) {
+    objs.push({
+      name: obj.name,
+      address: obj.address,
+      id: Math.random().toString()
+    });
+  }
+
+  cliff.putObjectRows('data', objs, ['id', 'name', 'address']);
+```
+
+![output from string-object-rows.js][string-object-rows]
+
+**Colors Parameter**
+
+The `colors` parameter is an array that colors the first row. It uses the [colors.js][2]. You can use any of those.
+
+``` js
+  var cliff = require('../lib/cliff');
+
+  var rows = [
+    ['Name',        'Flavor',              'Dessert'],
+    ['Alice'.grey,  'cherry'.cyan,         'yogurt'.yellow],
+    ['Bob'.magenta, 'carmel'.rainbow,      'apples'.white],
+    ['Joe'.italic,  'chocolate'.underline, 'cake'.inverse],
+    ['Nick'.bold,   'vanilla',             'ice cream']
+  ];
+
+  cliff.putRows('data', rows, ['red', 'blue', 'green']);
+```
+
+The resulting output on the command-line would be:
+
+![output from puts-rows-colors.js][put-rows-colors]
 
 ### Inspecting Objects
 
 **cliff.inspect(obj)**
 
-The `inspect` method is a lightweight wrapper to a pre-configured [eyes][1] inspector. Here is how it is created:
+The `inspect` method is a lightweight wrapper to a pre-configured [eyes][1] inspector. If you wish to change the coloring of objects that are logged using `cliff` you only need to override `cliff.inspect` with a new [eyes][1] inspector. Here is how to use it:
 
 ``` js
-cliff.inspect = eyes.inspector({ stream: null,
-  styles: {               // Styles applied to stdout
-    all:     null,        // Overall style applied to everything
-    label:   'underline', // Inspection labels, like 'array' in `array: [1, 2, 3]`
-    other:   'inverted',  // Objects which don't have a literal representation, such as functions
-    key:     'grey',      // The keys in object literals, like 'a' in `{a: 1}`
-    special: 'grey',      // null, undefined...
-    number:  'blue',      // 0, 1, 2...
-    bool:    'magenta',   // true false
-    regexp:  'green',     // /\d+/
-  }
-});
+  var cliff = require('../lib/cliff');
+
+  console.log(cliff.inspect({
+    literal: "bazz",
+    arr: [
+      "one",
+      2,
+    ],
+    obj: {
+      host: "localhost",
+      port: 5984,
+      auth: {
+        username: "admin",
+        password: "password"
+      }
+    }
+  }));
 ```
 
-If you wish to change the coloring of objects that are logged using `cliff` you only need to override `cliff.inspect` with a new [eyes][1] inspector. 
+![output from inspect.js][inspect]
 
 **cliff.putObject(obj, [rewriters, padding])**
 
@@ -74,75 +189,26 @@ cliff.putObject({
 });
 ```
 
-The resulting output on the command-line would be (sadly the colors do not translate): 
+The resulting output on the command-line would be: 
 
-``` bash
-$ node examples/put-object.js 
-data:   {
-data:       arr: [ 'one', 2 ],
-data:       literal: 'bazz',
-data:       obj: {
-data:           host: 'localhost',
-data:           port: 5984,
-data:           auth: { username: 'admin', password: 'password' }
-data:       }
-data:   }
-```
-
-### Logging rows of data 
-
-**cliff.stringifyRows(rows, colors)**
-Takes a set of Arrays and row headers and returns properly formatted and padded rows. 
-
-**cliff.putRows(level, rows, colors)**
-Similar to `stringifyRows`, but it will log to the console using [winston][0] at the specified level.
-
-**cliff.rowifyObjects(objs, properties, colors)**
-Takes a set of Objects and the properties to extract from them and returns properly formatted and padded rows.
-
-**cliff.putObjectRows(level, objs, properties, colors)**
-Similar to `rowifyObjects`, but it will log to the console using [winston][0] at the specified level. Here's a sample:
-
-``` js
-  var cliff = require('cliff');
-
-  var objs = [], obj = {
-    name: "bazz",
-    address: "1234 Nowhere Dr.",
-  };
-
-  for (var i = 0; i < 10; i++) {
-    objs.push({
-      name: obj.name,
-      address: obj.address,
-      id: Math.random().toString()
-    });
-  }
-
-  cliff.putObjectRows('data', objs, ['id', 'name', 'address']);
-```
-
-``` bash
-  $ node examples/put-object-rows.js 
-  data:   id                   name address          
-  data:   0.4157979858573526   bazz 1234 Nowhere Dr. 
-  data:   0.7140450903680176   bazz 1234 Nowhere Dr. 
-  data:   0.39573496161028743  bazz 1234 Nowhere Dr. 
-  data:   0.8285396825522184   bazz 1234 Nowhere Dr. 
-  data:   0.40711840940639377  bazz 1234 Nowhere Dr. 
-  data:   0.7133555023465306   bazz 1234 Nowhere Dr. 
-  data:   0.006228019250556827 bazz 1234 Nowhere Dr. 
-  data:   0.5560931102372706   bazz 1234 Nowhere Dr. 
-  data:   0.14310582634061575  bazz 1234 Nowhere Dr. 
-  data:   0.4638693502638489   bazz 1234 Nowhere Dr. 
-``` 
+![output from put-object.js][put-object]
 
 ## Run Tests
-All of the winston tests are written in [vows][4], and cover all of the use cases described above.
+
+All of the cliff tests are written in [vows][4], and cover all of the use cases described above.
 
 ```
   npm test
 ```
+
+## Motivation
+
+Cliff is the swiss army knife of CLI formatting tools. It is based on highly flexible and powerful libraries: 
+
+* [winston][0]: A multi-transport async logging library for node.js
+* [eyes][1]: A customizable value inspector for node.js
+* [colors][2]: Get colors in your node.js console like what 
+
 
 #### Author: [Charlie Robbins](http://twitter.com/indexzero)
 
@@ -151,3 +217,11 @@ All of the winston tests are written in [vows][4], and cover all of the use case
 [2]: http://github.com/marak/colors.js
 [3]: http://github.com/nodejitsu/cliff/tree/master/examples
 [4]: http://vowsjs.org
+
+[inspect]: https://github.com/nicoreed/cliff/raw/master/assets/inspect.png
+[put-object-rows]: https://github.com/nicoreed/cliff/raw/master/assets/put-object-rows.png
+[put-object]: https://github.com/nicoreed/cliff/raw/master/assets/put-object.png
+[put-rows-colors]: https://github.com/nicoreed/cliff/raw/master/assets/put-rows-colors.png
+[put-rows]: https://github.com/nicoreed/cliff/raw/master/assets/put-rows.png
+[string-object-rows]: https://github.com/nicoreed/cliff/raw/master/assets/string-object-rows.png
+[string-rows]: https://github.com/nicoreed/cliff/raw/master/assets/string-rows.png
