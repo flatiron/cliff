@@ -218,10 +218,10 @@ Cliff is the swiss army knife of CLI formatting tools. It is based on highly fle
 [3]: http://github.com/nodejitsu/cliff/tree/master/examples
 [4]: http://vowsjs.org
 
-[inspect]: https://github.com/nicoreed/cliff/raw/master/assets/inspect.png
-[put-object-rows]: https://github.com/nicoreed/cliff/raw/master/assets/put-object-rows.png
-[put-object]: https://github.com/nicoreed/cliff/raw/master/assets/put-object.png
-[put-rows-colors]: https://github.com/nicoreed/cliff/raw/master/assets/put-rows-colors.png
-[put-rows]: https://github.com/nicoreed/cliff/raw/master/assets/put-rows.png
-[string-object-rows]: https://github.com/nicoreed/cliff/raw/master/assets/string-object-rows.png
-[string-rows]: https://github.com/nicoreed/cliff/raw/master/assets/string-rows.png
+[inspect]: https://github.com/nodejitsu/cliff/raw/master/assets/inspect.png
+[put-object-rows]: https://github.com/nodejitsu/cliff/raw/master/assets/put-object-rows.png
+[put-object]: https://github.com/nodejitsu/cliff/raw/master/assets/put-object.png
+[put-rows-colors]: https://github.com/nodejitsu/cliff/raw/master/assets/put-rows-colors.png
+[put-rows]: https://github.com/nodejitsu/cliff/raw/master/assets/put-rows.png
+[string-object-rows]: https://github.com/nodejitsu/cliff/raw/master/assets/string-object-rows.png
+[string-rows]: https://github.com/nodejitsu/cliff/raw/master/assets/string-rows.png
