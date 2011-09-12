@@ -1,7 +1,7 @@
 {
   "name": "cliff",
   "description": "Your CLI formatting friend.",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": "Nodejitsu <info@nodejitsu.com>",
   "repository": {
     "type": "git",
@@ -11,7 +11,7 @@
   "dependencies": {
     "colors": "0.x.x",
     "eyes": "0.1.x",
-    "winston": "0.4.x"
+    "winston": "0.5.x"
   },
   "devDependencies": {
     "vows": "0.5.x"
