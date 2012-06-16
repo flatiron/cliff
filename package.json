@@ -19,7 +19,7 @@
   "dependencies": {
     "colors": "0.x.x",
     "eyes": "0.1.x",
-    "winston": "0.5.x"
+    "winston": "0.6.x"
   },
   "devDependencies": {
     "vows": "0.5.x"
