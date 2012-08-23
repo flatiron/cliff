@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/flatiron/cliff.png)](http://travis-ci.org/flatiron/cliff)
 # cliff
 
 CLI output formatting tools: "Your CLI Formatting Friend".
