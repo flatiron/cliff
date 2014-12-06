@@ -2,14 +2,11 @@
   "name": "cliff",
   "description": "Your CLI formatting friend.",
   "version": "0.1.9",
-  "author": "Nodejitsu Inc. <info@nodejitsu.com>",
+  "author": "Charlie Robbins <charlie.robbins@gmail.com>",
   "repository": {
     "type": "git",
     "url": "http://github.com/flatiron/cliff.git"
   },
-  "maintainers": [
-    "indexzero <charlie@nodejitsu.com>"
-  ],
   "keywords": [
     "cli",
     "logging",
@@ -17,12 +14,12 @@
     "winston"
   ],
   "dependencies": {
-    "colors": "0.x.x",
-    "eyes": "0.1.x",
+    "colors": "~1.0.3",
+    "eyes": "~0.1.8",
     "winston": "0.8.x"
   },
   "devDependencies": {
-    "vows": "0.7.x"
+    "vows": "0.8.x"
   },
   "main": "./lib/cliff",
   "scripts": {
