@@ -16,7 +16,7 @@
   "dependencies": {
     "colors": "~1.0.3",
     "eyes": "~0.1.8",
-    "winston": "0.8.x"
+    "winston": "3.x"
   },
   "devDependencies": {
     "vows": "0.8.x"
@@ -29,4 +29,3 @@
     "node": ">= 0.4.0"
   }
 }
-
