@@ -5,12 +5,34 @@
  *
  */
 
+// When using cliff with winston 0.8.x in node 14.x a warning is emitted:
+//
+// Warning: Accessing non-existent property 'padLevels' of module exports
+// inside circular dependency
+//
+// The warning is emitted when we require'd cliff, which happens before any
+// test, so in order to test that a warning is *not* emitted we have to capture
+// it before requiring cliff.
+var warnings = [];
+process.on('warning', function(warning) {
+  warnings.push(warning);
+});
+
 var assert = require('assert'),
     vows = require('vows'),
     eyes = require('eyes'),
     cliff = require('../lib/cliff');
 
 vows.describe('cliff').addBatch({
+  "When require cliff module": {
+    "no warning should be raised": function () {
+      var rows = [
+        ["a", "b"],
+      ];
+      cliff.putRows('info', rows, ['red', 'green']);
+      assert.isEmpty(warnings);
+    },
+  },
   "When using cliff module": {
     "the columnMajor() method": {
       "should respond with rows in column major form": function () {
