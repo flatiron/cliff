@@ -14,7 +14,7 @@
     "winston"
   ],
   "dependencies": {
-    "colors": "~1.0.3",
+    "colors": "1.4.0",
     "eyes": "~0.1.8",
     "winston": "0.8.x"
   },
